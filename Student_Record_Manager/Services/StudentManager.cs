@@ -10,7 +10,7 @@ namespace Student_Record_Manager.Services
 {
     internal class StudentManager
     {
-        private List<Student> _students;
+        private readonly List<Student> _students;
 
         public StudentManager()
         {
@@ -24,7 +24,25 @@ namespace Student_Record_Manager.Services
             _students.Add(student);
         }
 
+        public void UpdateStudent(int id, string name, int age, decimal grade)
+        {
+            Student? findedStudent = _students.FirstOrDefault(s => s.Id == id) ?? throw new Exception("Student Not Found");
+            findedStudent.Name = name;
+            findedStudent.Age = age;
+            findedStudent.Grade = grade;
+        }
 
+        public void DeleteStudent(int id)
+        {
+            Student student = _students.FirstOrDefault(s => s.Id == id) ?? throw new Exception("Student Not Found");
+            _students.Remove(student);
+        }
+
+        public void DisplayStudent(int id)
+        {
+            Student student = _students.FirstOrDefault(student => student.Id == id) ?? throw new Exception("Student Not Found");
+            Console.WriteLine(student.ToString());
+        }
 
         public void PrintStudents()
         {
