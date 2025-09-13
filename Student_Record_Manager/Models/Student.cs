@@ -10,7 +10,7 @@ namespace Student_Record_Manager.Models
     internal class Student
     {
         private int _id;
-        private string _name = string.Empty; // Initialize to avoid CS8618
+        private string _name = string.Empty;
         private decimal _grade;
         public int Id
         {
