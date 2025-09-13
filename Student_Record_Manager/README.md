@@ -1,8 +1,6 @@
+# 🏫 Student Manager (C# Console App)
 
-
-# ?? Student Manager (C# Console App)
-
-## ?? Overview
+## 📌 Overview
 
 This is a simple **C# Console Application** that demonstrates **CRUD operations** (Create, Read, Update, Delete) on a list of students.
 The program uses a **menu-driven interface** that runs in a loop until the user chooses to exit.
@@ -15,39 +13,39 @@ It is designed for learning purposes, focusing on:
 
 ---
 
-## ? Features
+## ✨ Features
 
-*  **Add Student** � Insert new students with ID, Name, Age, and Grade.
-* **Update Student** � Modify existing student details by ID.
-* **Delete Student** � Remove a student by ID.
-* **Display Student** � View details of a single student by ID.
-* **Display All Students** � Show all students currently stored.
-* **Exit** � Close the program gracefully.
+*  **Add Student** – Insert new students with ID, Name, Age, and Grade.
+* **Update Student** – Modify existing student details by ID.
+* **Delete Student** – Remove a student by ID.
+* **Display Student** – View details of a single student by ID.
+* **Display All Students** – Show all students currently stored.
+* **Exit** – Close the program gracefully.
 *  Confirmation messages after each operation.
 *  Error handling for invalid operations (e.g., duplicate IDs, student not found).
 
 ---
 
-## ??? Project Structure
+## 🛠️ Project Structure
 
 ```
-?? Program.cs           // Main entry point & menu
-?? Models/
-?  ?? Student.cs        // Student model (Id, Name, Age, Grade + ToString)
-?? Services/
-?  ?? StudentManager.cs // CRUD operations logic
+├─ Program.cs           // Main entry point & menu
+├─ Models/
+│  └─ Student.cs        // Student model (Id, Name, Age, Grade + ToString)
+├─ Services/
+│  └─ StudentManager.cs // CRUD operations logic
 ```
 
 ---
 
-## ?? Requirements
+## 📦 Requirements
 
 * .NET 8.0 SDK or later
 * Any C# IDE or text editor (Visual Studio, VS Code, etc.)
 
 ---
 
-## ?? How to Run
+## ▶️ How to Run
 
 1. Clone the repository:
 
@@ -67,7 +65,7 @@ It is designed for learning purposes, focusing on:
 
 ---
 
-## ?? Example Usage
+## 📋 Example Usage
 
 ```
 ===================================================
@@ -80,7 +78,7 @@ It is designed for learning purposes, focusing on:
   [5]  Display All Students
   [6]  Exit
 ===================================================
- Enter your choice: 1
+Enter your choice: 1
 Enter Id: 101
 Enter Name: Ahmed
 Enter Age: 20
@@ -91,7 +89,7 @@ Enter Grade: 3.5
 
 ---
 
-## ?? Sample Code Snippet
+## 🧩 Sample Code Snippet
 
 ```csharp
 public void AddStudent(Student student)
@@ -104,7 +102,7 @@ public void AddStudent(Student student)
 
 ---
 
-## ?? Future Improvements
+## 🚀 Future Improvements
 
 * Save and load students from a file (JSON/CSV).
 * Add input validation (prevent invalid values like negative age).
@@ -112,6 +110,3 @@ public void AddStudent(Student student)
 * Unit testing for CRUD methods.
 
 ---
-
-
-
