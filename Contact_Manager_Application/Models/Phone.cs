@@ -17,8 +17,7 @@ internal class Phone
         get => this._phoneNumber;
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._phoneNumber = value;
         }
     }
@@ -28,8 +27,7 @@ internal class Phone
         get => this._type;
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._type = value;
         }
     }
@@ -39,8 +37,7 @@ internal class Phone
         get => this._description;
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._description = value;
         }
     }
