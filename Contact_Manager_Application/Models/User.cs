@@ -72,6 +72,11 @@ internal class User
     public IReadOnlyList<EmailAddress> Emails => _emails.AsReadOnly();
 
 
+    public User()
+    {
+        _addedDate = DateTime.UtcNow;
+    }
+
     public User(int id, string firstname, string lastname, string gender,
         string city, Address address, Phone phone, EmailAddress email)
     {
