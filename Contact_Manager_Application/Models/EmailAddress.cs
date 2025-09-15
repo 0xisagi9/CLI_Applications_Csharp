@@ -16,8 +16,7 @@ internal class EmailAddress
         get => this._email;
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentNullException(value);
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._email = value;
         }
     }
@@ -27,8 +26,7 @@ internal class EmailAddress
         get => this._type;
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentNullException(value);
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._type = value;
         }
     }
@@ -38,8 +36,7 @@ internal class EmailAddress
         get => this._description;
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentNullException(value);
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._description = value;
         }
     }
