@@ -44,6 +44,10 @@ internal class EmailAddress
         }
     }
 
+    public EmailAddress()
+    {
+
+    }
     public EmailAddress(string email, string type, string description)
     {
         this.Email = email;
