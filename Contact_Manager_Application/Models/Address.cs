@@ -17,7 +17,7 @@ internal class Address
         get => this._address;
         set
         {
-            ArgumentNullException.ThrowIfNull(nameof(value));
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._address = value;
         }
     }
@@ -27,7 +27,7 @@ internal class Address
         get => this._type;
         set
         {
-            ArgumentNullException.ThrowIfNull(nameof(value));
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._type = value;
         }
     }
@@ -37,7 +37,7 @@ internal class Address
         get => this._description;
         set
         {
-            ArgumentNullException.ThrowIfNull(nameof(value));
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._description = value;
         }
     }
