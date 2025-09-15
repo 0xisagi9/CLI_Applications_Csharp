@@ -42,6 +42,10 @@ internal class Address
         }
     }
 
+    public Address()
+    {
+
+    }
 
     public Address(string address, string type, string description)
     {
