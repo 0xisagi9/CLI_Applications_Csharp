@@ -97,25 +97,38 @@ internal class User
 
     public void ShowUser()
     {
-        Console.WriteLine($"========== {this.Firstname} Information ==========");
-        Console.WriteLine($"ID        : {Id}");
-        Console.WriteLine($"Name      : {Firstname} {Lastname}");
-        Console.WriteLine($"Gender    : {Gender}");
-        Console.WriteLine($"City      : {City}");
-        Console.WriteLine($"Added Date: {_addedDate}");
+        Console.Clear();
+        Console.WriteLine("=================================================================");
+        Console.WriteLine($"USER INFORMATION (ID: {Id})");
+        Console.WriteLine("=================================================================");
+
+        Console.WriteLine($"{"Field",-12} | {"Value",-30}");
+        Console.WriteLine(new string('-', 50));
+
+        Console.WriteLine($"{"Name",-12} | {Firstname} {Lastname}");
+        Console.WriteLine($"{"Gender",-12} | {Gender}");
+        Console.WriteLine($"{"City",-12} | {City}");
+        Console.WriteLine($"{"Added Date",-12} | {_addedDate}");
 
         Console.WriteLine("\n-- Addresses --");
-        foreach (Address addr in this._addresses)
-            Console.WriteLine($"  {addr.HomeAddress}");
+        Console.WriteLine($"{"Type",-12} | {"Address",-30} | {"Description",-20}");
+        Console.WriteLine(new string('-', 70));
+        foreach (var addr in _addresses)
+            Console.WriteLine($"{addr.Type,-12} | {addr.HomeAddress,-30} | {addr.Description,-20}");
 
         Console.WriteLine("\n-- Phones --");
-        foreach (var ph in this._phones)
-            Console.WriteLine($"  {ph.PhoneNumber}");
+        Console.WriteLine($"{"Type",-12} | {"Phone",-20} | {"Description",-20}");
+        Console.WriteLine(new string('-', 60));
+        foreach (var ph in _phones)
+            Console.WriteLine($"{ph.Type,-12} | {ph.PhoneNumber,-20} | {ph.Description,-20}");
 
         Console.WriteLine("\n-- Emails --");
-        foreach (var em in this._emails)
-            Console.WriteLine($"  {em.Email}");
+        Console.WriteLine($"{"Type",-12} | {"Email",-30} | {"Description",-20}");
+        Console.WriteLine(new string('-', 70));
+        foreach (var em in _emails)
+            Console.WriteLine($"{em.Type,-12} | {em.Email,-30} | {em.Description,-20}");
 
-        Console.WriteLine("\n-----------------------------------------------------------------\n");
+        Console.WriteLine("\n=================================================================\n");
     }
+
 }
