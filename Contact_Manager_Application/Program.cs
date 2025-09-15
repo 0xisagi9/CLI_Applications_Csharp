@@ -16,17 +16,6 @@ internal class Program
         {
             bool ProgramRun = true;
             ContanctManager Service = new();
-            var user1 = new User(
-    1,
-    "Ahmed",
-    "Ali",
-    "Male",
-    "Cairo",
-    new Address("Cairo", "Home", "Main Flat"),
-    new Phone("0101234567", "Mobile", "Personal Phone"),
-    new EmailAddress("ahmed.ali@gmail.com", "Personal", "Primary Email")
-);
-            Service.AddUser(user1);
 
             while (ProgramRun)
             {
