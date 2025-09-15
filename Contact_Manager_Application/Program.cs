@@ -79,115 +79,76 @@ internal class Program
     {
         User newUser = new();
 
-        bool checkerRun = true;
-
         Console.Clear();
         Console.WriteLine("===================================================");
         Console.WriteLine("              Enter User Information               ");
         Console.WriteLine("===================================================");
-        Console.Write("Enter Id: ");
-        newUser.Id = int.Parse(Console.ReadLine()!);
+        newUser.Id = int.Parse(ReadInput("Enter Id: "));
+        newUser.Firstname = ReadInput("Enter First Name: ");
+        newUser.Lastname = ReadInput("Enter Last Name: ");
+        newUser.Gender = ReadInput("Enter Gender: ");
+        newUser.City = ReadInput("Enter City: ");
 
-        Console.Write("Enter Firstname: ");
-        newUser.Firstname = Console.ReadLine()!;
-
-        Console.Write("Enter Lastname: ");
-        newUser.Lastname = Console.ReadLine()!;
-
-        Console.Write("Enter Gender: ");
-        newUser.Gender = Console.ReadLine()!;
-
-        Console.Write("Enter City: ");
-        newUser.City = Console.ReadLine()!;
-
-        Console.WriteLine("---- Address Information -----");
-        Address newAdd = AddressHelper();
-        newUser.AddAddress(newAdd);
-
-        while (checkerRun)
+        // Address
+        do
         {
+            newUser.AddAddress(AddressHelper());
 
-            Console.WriteLine(" ----- Add Another Address -----");
-            Console.WriteLine("Enter Chioce (Yes | No):");
-            string? chioce = Console.ReadLine()!;
-            switch (chioce)
-            {
-                case "Yes":
-                    Console.WriteLine("---- Address Information -----");
-                    Address newExtraAdd = AddressHelper();
-                    newUser.AddAddress(newExtraAdd);
-                    break;
+        } while (ReadInput("Add another Address? (Yes/No): ").Equals("Yes", StringComparison.OrdinalIgnoreCase));
 
-                case "No":
-                    checkerRun = false;
-                    Console.WriteLine("\n Exiting...");
+        // Phone
+        do
+        {
+            newUser.AddPhone(PhoneHelper());
 
-                    break;
+        } while (ReadInput("Add another Phone? (Yes/No): ").Equals("Yes", StringComparison.OrdinalIgnoreCase));
 
-                default:
-                    Console.WriteLine("\n Invailid Option");
-                    break;
-            }
+        // Email
 
-            if (checkerRun)
-            {
-                Console.WriteLine("\nPress any key to return to the menu...");
-                Console.ReadKey();
-            }
-        }
+        do
+        {
+            newUser.AddEmail(EmailHepler());
 
-
-
-        Console.WriteLine("---- Phone Information -----");
-        Phone newPHone = PhoneHelper();
-        newUser.AddPhone(newPHone);
-
-        Console.WriteLine("---- Email Information -----");
-        EmailAddress newEmail = EmailHepler();
-        newUser.AddEmail(newEmail);
-
-
+        } while (ReadInput("Add another Email? (Yes/No): ").Equals("Yes", StringComparison.OrdinalIgnoreCase));
         return newUser;
     }
 
     static Address AddressHelper()
     {
-        Address newAdd = new();
-        Console.WriteLine("Enter Home Address:");
-        newAdd.HomeAddress = Console.ReadLine()!;
-        Console.WriteLine("Enter Address Type:");
-        newAdd.Type = Console.ReadLine()!;
-        Console.WriteLine("Enter Description:");
-        newAdd.Description = Console.ReadLine()!;
+        return new Address
+        {
+            HomeAddress = ReadInput("Enter Home Address: "),
+            Type = ReadInput("Enter Address Type: "),
+            Description = ReadInput("Enter Address Description: ")
 
-        return newAdd;
+        };
     }
 
     static Phone PhoneHelper()
     {
-        Phone newPhone = new();
-        Console.WriteLine("Enter Phone Number:");
-        newPhone.PhoneNumber = Console.ReadLine()!;
-        Console.WriteLine("Enter Phone Type:");
-        newPhone.Type = Console.ReadLine()!;
-        Console.WriteLine("Enter Description:");
-        newPhone.Description = Console.ReadLine()!;
-
-        return newPhone;
+        return new Phone
+        {
+            PhoneNumber = ReadInput("Enter Phone Number : "),
+            Type = ReadInput("Enter Phone Type: "),
+            Description = ReadInput("Enter Phone Description: ")
+        };
 
     }
 
     static EmailAddress EmailHepler()
     {
-        EmailAddress newEmail = new();
-        Console.WriteLine("Enter Email Address");
-        newEmail.Email = Console.ReadLine()!;
-        Console.WriteLine("Enter Email Type:");
-        newEmail.Type = Console.ReadLine()!;
-        Console.WriteLine("Enter Description:");
-        newEmail.Description = Console.ReadLine()!;
+        return new EmailAddress
+        {
+            Email = ReadInput("Enter Email Address: "),
+            Type = ReadInput("Enter Email Type: "),
+            Description = ReadInput("Enter Email Description: ")
+        };
+    }
 
-        return newEmail;
+    static string ReadInput(string prompt)
+    {
+        Console.WriteLine(prompt);
+        return Console.ReadLine()!;
     }
 
 
