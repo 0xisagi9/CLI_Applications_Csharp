@@ -44,7 +44,10 @@ internal class Phone
             this._description = value;
         }
     }
+    public Phone()
+    {
 
+    }
     public Phone(string phoneNumber, string type, string description)
     {
         this._phoneNumber = phoneNumber;
