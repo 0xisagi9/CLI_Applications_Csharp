@@ -1,4 +1,5 @@
 ﻿using Contact_Manager_Application.Models;
+using Contact_Manager_Application.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,5 +50,45 @@ internal class ContanctManager
         }
         foreach (var user in _users)
             user.ShowUser();
+    }
+
+    public static User BuildUser()
+    {
+        User newUser = new();
+
+
+        Console.Clear();
+        Console.WriteLine("===================================================");
+        Console.WriteLine("              Enter User Information               ");
+        Console.WriteLine("===================================================");
+
+        newUser.Id = int.Parse(InputUtility.ReadInput("Enter Id: "));
+        newUser.Firstname = InputUtility.ReadInput("Enter First Name: ");
+        newUser.Lastname = InputUtility.ReadInput("Enter Last Name: ");
+        newUser.Gender = InputUtility.ReadInput("Enter Gender: ");
+        newUser.City = InputUtility.ReadInput("Enter City: ");
+
+        // Address
+        do
+        {
+            newUser.AddAddress(UserDataFactory.AddressHelper());
+
+        } while (InputUtility.ReadInput("Add another Address? (Yes/No): ").Equals("Yes", StringComparison.OrdinalIgnoreCase));
+
+        // Phone
+        do
+        {
+            newUser.AddPhone(UserDataFactory.PhoneHelper());
+
+        } while (InputUtility.ReadInput("Add another Phone? (Yes/No): ").Equals("Yes", StringComparison.OrdinalIgnoreCase));
+
+        // Email
+
+        do
+        {
+            newUser.AddEmail(UserDataFactory.EmailHepler());
+
+        } while (InputUtility.ReadInput("Add another Email? (Yes/No): ").Equals("Yes", StringComparison.OrdinalIgnoreCase));
+        return newUser;
     }
 }
