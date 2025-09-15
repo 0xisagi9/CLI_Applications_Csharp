@@ -32,7 +32,7 @@ internal class User
         get => this._firstname;
         set
         {
-            ArgumentNullException.ThrowIfNull(value);
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._firstname = value;
         }
     }
@@ -41,7 +41,7 @@ internal class User
         get => this._lastname;
         set
         {
-            ArgumentNullException.ThrowIfNull(value);
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._lastname = value;
         }
     }
@@ -51,7 +51,7 @@ internal class User
         get => this._gender;
         set
         {
-            ArgumentNullException.ThrowIfNull(value);
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._gender = value;
 
         }
@@ -62,7 +62,7 @@ internal class User
         get => this._city;
         set
         {
-            ArgumentNullException.ThrowIfNull(value);
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
             this._city = value;
         }
     }
