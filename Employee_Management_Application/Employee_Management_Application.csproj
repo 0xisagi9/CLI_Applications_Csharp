@@ -8,12 +8,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="DataAccess\" />
 		<Folder Include="Database\" />
 		<Folder Include="Docs\" />
 		<Folder Include="UI\" />
 		<Folder Include="Services\" />
-		<Using Include="System.Console" Static="true"/>
+		<Using Include="System.Console" Static="true" />
 	</ItemGroup>
 
 </Project>
