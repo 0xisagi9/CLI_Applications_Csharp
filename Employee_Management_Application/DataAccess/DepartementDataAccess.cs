@@ -100,25 +100,4 @@ internal class DepartementDataAccess
 
 
     }
-
-    /// Using DataReader
-    //public List<Departement> GetAllDepartement()
-    //{
-    //    var list = new List<Departement>();
-    //    using SqlConnection Connection = new(this._connectionString);
-    //    Connection.Open();
-    //    string Query = "SELECT DepartmentId, DepartmentName FROM Department";
-    //    using SqlCommand command = new(Query, Connection);
-    //    using SqlDataReader reader = command.ExecuteReader();
-    //    while (reader.Read())
-    //    {
-    //        list.Add(new Departement(reader.GetInt32(0), reader.GetString(1)));
-
-    //    }
-    //    Connection.Close();
-
-    //    return list;
-    //}
-
-
 }
