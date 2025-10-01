@@ -48,7 +48,10 @@ internal class DepartementDataAccess
         newRow["DepartmentName"] = name;
         dataTable.Rows.Add(newRow);
 
-        adapter.Update(dataTable);
+        int rowsAffected = adapter.Update(dataTable);
+        WriteLine(rowsAffected > 0
+           ? $"Department '{name}' inserted successfully."
+           : "Insert failed.");
 
     }
 
@@ -72,9 +75,16 @@ internal class DepartementDataAccess
         //3. Find the Row to Update
         DataRow[] rows = dataTable.Select($"DepartmentId = {id}");
         if (rows.Length > 0)
+        {
             rows[0]["DepartmentName"] = name;
+            int rowsAffected = adapter.Update(dataTable);
+            WriteLine(rowsAffected > 0 ? $"Department #{id} updated to '{name}'." : "Update failed.");
+        }
+        else
+        {
+            WriteLine($"Department with ID {id} not found.");
+        }
 
-        adapter.Update(dataTable);
     }
 
     public void DeleteDepartment(int id)
@@ -93,11 +103,15 @@ internal class DepartementDataAccess
 
         //3. Find the Row To Delete
         DataRow[] rows = dataTable.Select($"DepartmentId = {id}");
-        if (!rows.IsNullOrEmpty())
+        if (rows.Length > 0)
+        {
             rows[0].Delete();
-
-        adapter.Update(dataTable);
-
-
+            int rowsAffected = adapter.Update(dataTable);
+            WriteLine(rowsAffected > 0 ? $"Department #{id} deleted successfully." : "Delete failed.");
+        }
+        else
+        {
+            WriteLine($"Department with ID {id} not found.");
+        }
     }
 }
