@@ -1,4 +1,8 @@
-﻿namespace Employee_Management_Application.Models;
+﻿using Microsoft.Data.SqlClient;
+using System.Diagnostics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Employee_Management_Application.Models;
 
 internal class Employees : StaffMembers
 {
@@ -13,15 +17,40 @@ internal class Employees : StaffMembers
         }
     }
 
+    public Employees(int id, string name, string phone, string email, string type, int departementId, string ssn)
+       : base(id, name, phone, email, type, departementId)
+    {
+        this.SSN = ssn;
+    }
+    public Employees(string name, string phone, string email, string type, int departementId, string ssn)
+       : base(name, phone, email, type, departementId)
+    {
+        this.SSN = ssn;
+    }
+
+    public Employees() { }
+
     public override decimal Pay()
     {
         throw new NotImplementedException();
     }
 
-    public Employees(int id, string name, string phone, string email, string type, Departement departement, string ssn)
-        : base(id, name, phone, email, type, departement)
+    /// <summary>
+    /// Prodecure Name for StoredProcedures in SQL Database
+    /// </summary>
+
+    public override string ProcedureName => "AddEmployee";
+    /// <summary>
+    /// Add Custom Parameters Specific For the Type of Employee
+    /// </summary>
+    /// <param name="command"></param>
+    public override void AddParameters(SqlCommand command)
     {
-        this.SSN = ssn;
+        command.Parameters.AddWithValue("@Name", this.Name);
+        command.Parameters.AddWithValue("@Phone", this.Phone);
+        command.Parameters.AddWithValue("@Email", this.Email);
+        command.Parameters.AddWithValue("@DepartmentId", this.DepartementId);
+        command.Parameters.AddWithValue("@SSN", this.SSN);
     }
 
 }
