@@ -22,7 +22,7 @@ internal class DepartementDataAccess
         DataTable dataTable = new();
 
         using SqlConnection connection = new(this._connectionString);
-        string Query = "SELECT DepartmentId, DepartmentName FROM Department";
+        string Query = "SELECT D.DepartmentId,D.DepartmentName,S.StaffId,S.Name,S.Type\r\nFROM Department D INNER JOIN StaffMembers S ON S.DepartmentId = D.DepartmentId ORDER BY D.DepartmentID";
         SqlDataAdapter adapter = new(Query, connection);
         adapter.Fill(dataTable);
         return dataTable;
