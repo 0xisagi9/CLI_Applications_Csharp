@@ -1,4 +1,6 @@
-﻿namespace Employee_Management_Application.Models;
+﻿using Microsoft.Data.SqlClient;
+
+namespace Employee_Management_Application.Models;
 
 internal abstract class StaffMembers
 {
@@ -8,16 +10,11 @@ internal abstract class StaffMembers
     private string _email = string.Empty;
     private string _type = string.Empty;
     private int _departementId;
-    private readonly Departement _departement;
 
     public int Id
     {
         get => this._id;
-        set
-        {
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(value, nameof(value));
-            this._id = value;
-        }
+        set { this._id = value; }
     }
     public string Name
     {
@@ -61,17 +58,33 @@ internal abstract class StaffMembers
         set { this._departementId = value; }
     }
 
-    public StaffMembers(int id, string name, string phone, string email, string type, Departement departement)
+    public StaffMembers(int id, string name, string phone, string email, string type, int departementId)
     {
         this.Id = id;
         this.Name = name;
         this.Phone = phone;
         this.Email = email;
         this.Type = type;
-        this.DepartementId = departement.Id;
-        this._departement = departement;
+        this.DepartementId = departementId;
+
+    }
+    public StaffMembers(string name, string phone, string email, string type, int departementId)
+    {
+        this.Name = name;
+        this.Phone = phone;
+        this.Email = email;
+        this.Type = type;
+        this.DepartementId = departementId;
     }
 
+    public StaffMembers() { }
+
+    public abstract string ProcedureName { get; }
+
     public abstract decimal Pay();
+
+    public abstract void AddParameters(SqlCommand command);
+
+
 
 }
