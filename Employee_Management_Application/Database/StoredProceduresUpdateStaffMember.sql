@@ -17,3 +17,7 @@ BEGIN
     WHERE StaffId = @StaffId;
 END
 GO
+
+SELECT * FROM StaffMembers
+SELECT D.DepartmentId,D.DepartmentName,S.StaffId,S.Name,S.Type
+FROM Department D INNER JOIN StaffMembers S ON S.DepartmentId = D.DepartmentId
