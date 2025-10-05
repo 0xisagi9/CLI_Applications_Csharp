@@ -72,3 +72,22 @@ VALUES(@StaffId,30.00,20)
 COMMIT TRANSACTION;
 
 SELECT * FROM Employees E inner join StaffMembers S ON E.EmployeeId = S.StaffId
+ORDER BY E.EmployeeId
+
+
+
+INSERT INTO [dbo].[Projects] (Location, CurrentCost, ManagerStaffId)
+VALUES
+('Cairo',     12000.50, 1),
+('Alex',      15000.75, 2),
+('Giza',      18000.25, 3),
+('Luxor',      9500.00, 4),
+('Aswan',     20000.00, 5),
+('Tanta',     17500.60, 6),
+('Mansoura',  22000.40, 1),
+('Suez',      12500.10, 2),
+('Ismailia',  13500.90, 3),
+('Hurghada',  24500.00, 4);
+
+SELECT * FROM Projects
+
