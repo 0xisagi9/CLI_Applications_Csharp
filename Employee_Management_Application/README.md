@@ -2,136 +2,85 @@
 
 ## 📌 Overview
 
-The **Employee Management System** is a structured project designed to manage employees, departments, and projects in an organization.
-It combines **database concepts** and **object-oriented programming (OOP) principles**, including inheritance, polymorphism, and abstraction.
-
-The system also sets the foundation for applying advanced concepts such as **SOLID principles** and **Design Patterns**, which will be integrated in future iterations.
+The **Employee Management System** is a structured project designed to manage employees, departments, and projects.
+It brings together **database design** and **object-oriented programming (OOP) concepts**, serving as a hands-on learning project.
 
 ---
 
-## 🛠️ Core Features
+## 🛠️ Features
 
-* **Department Management**: Departments hold multiple staff members.
-* **Staff Management**: Abstract base class `StaffMember` defines shared attributes and behaviors.
-* **Employee Types**: Supports multiple employee models:
+* Manage **Departments** and their staff members.
+* Manage **Employees** with different types (Executive, Commission, Salaried, Hourly).
+* Support **Volunteers** as non-paid contributors.
+* Manage **Projects**, each assigned to a manager and containing multiple budgets.
+* Track **Budgets** and calculate total project costs.
+
+---
+
+## 📂 Class Design (Conceptual)
+
+* **Department** manages staff lists.
+* **StaffMember** is an abstract base class for all staff.
+* **Employee** extends staff with payroll functionality.
 
   * ExecutiveEmployee
   * CommissionEmployee
   * SalariedEmployee
   * HourlyEmployee
-* **Volunteer Support**: Non-paid staff members represented with `Volunteer`.
-* **Project Management**: Each project has a manager and can contain multiple budgets.
-* **Budget Tracking**: Projects can increase or calculate total budget dynamically.
+* **Volunteer** extends staff without salary.
+* **Project** links to a manager and contains budgets.
+* **Budget** supports increasing and tracking values.
+
+![Class Diagram](./Docs/ClassDiagram.png)
+
+---
+## 🔗 ERD  
+
+* A Department has many StaffMembers.
+* A StaffMember may be an Employee or Volunteer.
+* An Employee may be (Salary, Commisstion, Hourly, Executive)
+* An Employee can manage multiple Projects.
+* A Project contains many Budgets.
+
+![ERD](./Docs/ERDDiagram.png)
+
+
+## 🎓 What I Have Learned So Far
+
+This project helped me strengthen both my **OOP** and **Database** knowledge:
+
+### Object-Oriented Programming
+
+* **Inheritance** → Created a hierarchy of staff and employee types.
+* **Polymorphism** → Overridden methods like `Pay()` and `Print()` across subclasses.
+* **Data Abstraction** → Used abstract classes and methods for common behaviors.
+* **Encapsulation** → Grouped related data and methods into cohesive classes.
+
+### Databases & Data Access
+
+* **SQL** → Designed tables, constraints, and relationships.
+* **Stored Procedures** → Used to handle CRUD operations more securely and efficiently.
+* **ADO.NET** → Connected C# code with SQL Server for database interaction.
 
 ---
 
-## 📂 Class Design
+## 🚀 Future Learning Goals
 
-The system is modeled with an **object-oriented class structure**:
+I have **not yet learned** the following but will focus on them next:
 
-* **Department**
+* **SOLID Principles** → For building maintainable and scalable architecture.
+* **Design Patterns** → To solve recurring design problems elegantly.
 
-  * Holds `DepartmentId`, `DepartmentName`, and a list of staff members.
-  * Methods: Add staff, print all departments.
-
-* **StaffMember (Abstract)**
-
-  * Base class for all staff-related types.
-  * Defines `Pay()` and `Print()` as virtual/abstract methods.
-
-* **Employee (Concrete)**
-
-  * Extends `StaffMember` with `SocialSecurityNumber`.
-  * Overridden `Pay()` and `Print()` implementations.
-  * Specializations:
-
-    * `ExecutiveEmployee` → Salary + Bonus.
-    * `CommissionEmployee` → Target-based pay.
-    * `SalariedEmployee` → Fixed salary.
-    * `HourlyEmployee` → Hourly rate × hours worked.
-
-* **Volunteer**
-
-  * Extends `StaffMember`.
-  * Non-paid, holds a `Value` contribution field.
-
-* **Project**
-
-  * Contains `ProjectId`, `Location`, `CurrentCost`, and a manager (Employee).
-  * Holds multiple budgets.
-  * Methods: Calculate total budget, print details.
-
-* **Budget**
-
-  * Defines `BudgetId`, `Value`.
-  * Method to increase budget by a given amount.
-
- ![ERD Diagram](Docs/Screenshot 2025-10-05 112152.png)
+After I learn them, I will **refactor the project** to apply best practices and improve the design.
 
 ---
 
-## 🔗 ERD & Class Diagram
-
-### Entity-Relationship Diagram (ERD)
-
-* A **Department** has many **StaffMembers**.
-* A **StaffMember** may be an **Employee** or **Volunteer**.
-* An **Employee** can manage multiple **Projects**.
-* A **Project** contains many **Budgets**.
-
-### Class Diagram (as provided)
-
-The UML class diagram illustrates:
-
-* Inheritance hierarchy between `StaffMember`, `Employee`, and specialized employee types.
-* Association between `Department` and `StaffMember`.
-* Association between `Project` and `Employee` (as manager).
-* Aggregation of `Project` and `Budget`.
-
----
-
-## 🚀 Future Enhancements
-
-Planned improvements include:
-
-* Full implementation of **CRUD operations** for Departments, Employees, and Projects.
-* Business logic validation (e.g., budget constraints, project manager limits).
-* Integration with **SQL Server backend** for persistent storage.
-* Applying **SOLID principles** for clean, maintainable architecture.
-* Incorporating **Design Patterns** such as Repository, Factory, and Strategy.
-* User-friendly frontend integration with **C#/.NET** or **Node.js/React**.
-
----
-
-## 📚 Learning Goals
-
-This project supports my learning in:
-
-* **Database Design & ERD Modeling**.
-* **Object-Oriented Programming** (Inheritance, Abstraction, Polymorphism).
-* Applying **SOLID Principles** for scalable system design.
-* Exploring **Design Patterns** to improve flexibility and maintainability.
-* Building **enterprise-level applications** with both backend and frontend layers.
-
----
-
-## 📅 Status
+## 📅 Project Status
 
 * ✅ ERD & Class Diagrams completed.
-* ✅ Database schema designed.
-* ✅ Initial object-oriented model implemented.
-* 🔜 CRUD operations.
-* 🔜 Applying SOLID & Design Patterns.
-* 🔜 Backend + UI integration.
+* ✅ Implemented OOP structure (Inheritance, Polymorphism, etc.).
+* ✅ Basic SQL schema and Stored Procedures.
+* ✅ Integrated database with **ADO.NET**.
+* 🔜 Apply SOLID & Design Patterns.
+* 🔜 Refactor and extend functionalities.
 
----
-
-## 🤝 Contribution
-
-This project is a **learning-driven initiative**. Contributions, suggestions, and feedback about design, OOP principles, and best practices are always welcome.
-
----
-
-## 📄 License
-
-This project is open-source under the MIT License.
