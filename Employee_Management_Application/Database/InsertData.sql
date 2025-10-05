@@ -89,5 +89,6 @@ VALUES
 ('Ismailia',  13500.90, 3),
 ('Hurghada',  24500.00, 4);
 
-SELECT * FROM Projects
+SELECT P.ProjectId, P.Location,P.CurrentCost, P.ManagerStaffId, S.Name, S.DepartmentId, S.Type
+FROM Projects P INNER JOIN StaffMembers s ON S.StaffId = P.ManagerStaffId
 
