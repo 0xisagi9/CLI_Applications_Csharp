@@ -10,9 +10,17 @@
 	<ItemGroup>
 		<Folder Include="Database\" />
 		<Folder Include="Docs\" />
-		<Folder Include="UI\" />
 		<Folder Include="Services\" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.9" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
 		<Using Include="System.Console" Static="true" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>
