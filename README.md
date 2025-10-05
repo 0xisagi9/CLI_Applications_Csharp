@@ -7,6 +7,12 @@ This repository showcases simple yet effective applications that demonstrate **O
 
 ## 📌 Projects Included  
 
+### 🏫 [Student Manager](Student_Record_Manager)  
+The **Student Manager** is a C# console application demonstrating CRUD operations on a list of students.  
+It uses a menu-driven interface to add, update, delete, and display students, focusing on OOP, code organization, and exception handling for learning purposes.
+
+---
+
 ### 📘 [Contact Manager Application](Contact_Manager_Application)  
 The **Contact Manager Application** is a C# console project that allows users to manage their contacts.  
 It supports adding, updating, viewing, and deleting user information including addresses, phone numbers, and emails.  
@@ -14,8 +20,9 @@ Designed using OOP principles with a modular structure (Models, Services, Utilit
 
 ---
 
-### 🏫 [Student Manager](Student_Record_Manager)  
-The **Student Manager** is a C# console application demonstrating CRUD operations on a list of students.  
-It uses a menu-driven interface to add, update, delete, and display students, focusing on OOP, code organization, and exception handling for learning purposes.
+
+### 👷🏻‍♂️[Employee Management Application](Employee_Management_Application)
+
+The **Employee Management Application** is a structured project designed to manage employees, departments, and projects. It brings together database design and object-oriented programming (OOP) concepts, serving as a hands-on learning project.
 
 
