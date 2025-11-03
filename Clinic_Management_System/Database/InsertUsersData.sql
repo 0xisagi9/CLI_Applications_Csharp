@@ -57,3 +57,5 @@ VALUES
 (20, 'Anemia - Iron supplements');
 
 
+SELECT * FROM [User] U inner join Doctor D on d.DoctorId = u.UserId
+SELECT * FROM AppointmentSlot
