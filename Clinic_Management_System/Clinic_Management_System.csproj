@@ -8,13 +8,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Business\Models\" />
-		<Folder Include="Business\Services\" />
-		<Folder Include="Core\Interfaces\" />
 		<Folder Include="Core\Utilites\" />
-		<Folder Include="DataAccess\Database\" />
 		<Folder Include="Presentation\Menu\" />
-		<Folder Include="DataAccess\Repository\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.66" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>
