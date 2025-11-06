@@ -25,28 +25,11 @@ VALUES
 (5, '2024-01-16 15:00:00', '2024-01-16 16:00:00', 0);
 
 
-SELECT 
-    s.SlotId,
-    s.DoctorId,
-    u.Name as DoctorName,
-    d.Specification,
-    s.StartTime,
-    s.EndTime,
-    s.IsBooked
-FROM [dbo].[AppointmentSlot] s
-INNER JOIN [dbo].[Doctor] d ON s.DoctorId = d.DoctorId
-INNER JOIN [dbo].[User] u ON d.DoctorId = u.UserId
-ORDER BY s.DoctorId, s.StartTime;
 
 
 
 
 
--- Clear any existing appointments (if needed)
--- DELETE FROM [dbo].[Appointment];
--- UPDATE [dbo].[AppointmentSlot] SET [IsBooked] = 0;
-
--- Create appointments with different statuses
 INSERT INTO [dbo].[Appointment] ([SlotId], [PatientId], [Status])
 VALUES
 -- Cardiology appointments
@@ -75,23 +58,3 @@ SET [IsBooked] = 1
 WHERE [SlotId] IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 
-
-SELECT 
-    a.AppointmentId,
-    a.Status,
-    p.PatientId,
-    up.Name as PatientName,
-    p.MedicalNotes,
-    d.DoctorId,
-    ud.Name as DoctorName,
-    d.Specification,
-    s.SlotId,
-    s.StartTime,
-    s.EndTime
-FROM [dbo].[Appointment] a
-INNER JOIN [dbo].[Patient] p ON a.PatientId = p.PatientId
-INNER JOIN [dbo].[User] up ON p.PatientId = up.UserId
-INNER JOIN [dbo].[AppointmentSlot] s ON a.SlotId = s.SlotId
-INNER JOIN [dbo].[Doctor] d ON s.DoctorId = d.DoctorId
-INNER JOIN [dbo].[User] ud ON d.DoctorId = ud.UserId
-ORDER BY a.AppointmentId;
