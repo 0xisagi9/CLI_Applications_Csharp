@@ -19,17 +19,21 @@ CONSTRAINT [UQ_User_Email] UNIQUE ([Email])
 CREATE TABLE [dbo].[Doctor]
 (
 [DoctorId] INT NOT NULL,
-[Specification] VARCHAR(50) NOT NULL,
+[Specification] VARCHAR(50) NULL,
 CONSTRAINT [PK_Doctor] PRIMARY KEY CLUSTERED ([DoctorId] ASC),
 CONSTRAINT [FK_Doctor_User] FOREIGN KEY ([DoctorId]) REFERENCES [dbo].[User]([UserId]) ON DELETE CASCADE
 )
+
+ALTER TABLE [dbo].[Doctor]
+ALTER COLUMN [Specification] VARCHAR(50) NULL;
 
 --															Create Patient Table
 
 CREATE TABLE [dbo].[Patient]
 (
 [PatientId] INT NOT NULL,
-[MedicalNotes] VARCHAR(50) NOT NULL,
+[MedicalNotes] VARCHAR(50) NULL,
 CONSTRAINT [PK_Patient] PRIMARY KEY CLUSTERED ([PatientId] ASC),
 CONSTRAINT [FK_Patient_User] FOREIGN KEY ([PatientId]) REFERENCES [dbo].[User]([UserId]) ON DELETE CASCADE
 )
+
