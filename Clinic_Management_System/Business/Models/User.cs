@@ -11,9 +11,19 @@ internal class User
     public string? Email { get; set; }
     public string? Password { get; set; }
     public string? Role { get; set; }
+    public bool IsActive { get; set; }
 
 
     public User() { }
+    public User(int id, string name, string email, string password, string role, bool isActive)
+    {
+        UserId = id;
+        Name = name;
+        Email = email;
+        Password = password;
+        Role = role;
+        IsActive = isActive;
+    }
     public User(int id, string name, string email, string password, string role)
     {
         UserId = id;
