@@ -55,7 +55,3 @@ VALUES
 (18, 'Depression - Counseling and medication'),
 (19, 'Osteoporosis - Bone density monitoring'),
 (20, 'Anemia - Iron supplements');
-
-
-SELECT * FROM [User] U inner join Doctor D on d.DoctorId = u.UserId
-SELECT * FROM AppointmentSlot
