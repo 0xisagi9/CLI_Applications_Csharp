@@ -1,44 +1,58 @@
 ﻿using Clinic_Management_System.Business.Models;
 using Clinic_Management_System.Core.Interfaces;
+using Clinic_Management_System.DataAccess.Repository;
 using Microsoft.Data.SqlClient;
 using System.Runtime;
 
 namespace Clinic_Management_System.Business.Services;
 
-internal class DoctorService(IRepository<Doctor> doctorRepo)
+internal class DoctorService(AppointmentSlotRepository appointmentSlotRepo, DoctorRepository doctorRepo)
 {
-    private readonly IRepository<Doctor> _doctorRepo = doctorRepo;
+    private readonly AppointmentSlotRepository _appointmentRepository = appointmentSlotRepo;
+    private readonly DoctorRepository _doctorRepo = doctorRepo;
 
-    public IEnumerable<Doctor> GetAllDoctors() => _doctorRepo.GetAll();
-    public void AddNewDoctor(Doctor doctor)
+    public IEnumerable<AppointmentSlot> GetAllSlots(int doctorId, bool? IsActive = null, bool? IsBooked = null)
     {
-        try
+        //1) Check if Doctor With DoctorId Exist or Not
+        if (!_doctorRepo.Exist(doctorId))
         {
-            _doctorRepo.Add(doctor);
+            throw new KeyNotFoundException($"Doctor with Id {doctorId} doesn't exist");
         }
-        catch (Exception ex)
-        {
-            throw new Exception($"Falied to Add new Doctor, {ex.Message}");
-        }
+        //2) Get All Appointment Slots For this Doctor
+        return _appointmentRepository.GetSlotsByDoctorId(doctorId, IsActive, IsBooked);
     }
 
-    public void DeleteDoctor(int doctorId)
+    public void AddNewAppointmentSlot(int doctorId, AppointmentSlot slot)
     {
-        try
+        //1) Check if Doctor With DoctorId Exist or Not
+        if (!_doctorRepo.Exist(doctorId))
         {
-            _doctorRepo.Delete(doctorId);
+            throw new KeyNotFoundException($"Doctor with Id {doctorId} doesn't exist");
         }
-        catch (Exception ex)
-        {
-            throw new Exception($"Doctor with Id:{doctorId} Not found, {ex.Message}");
-        }
+        //2) Add New Slot
+        slot.DoctorId = doctorId;
+        _appointmentRepository.Add(slot);
     }
 
-    public Doctor GetDoctorById(int doctorId) => _doctorRepo.GetById(doctorId);
-
-    public void UpdateDoctr(int doctorId, Doctor doctor)
+    public void RemoveAppointmentSlot(int doctorId, int slotId)
     {
-        doctor.UserId = doctorId;
-        _doctorRepo.Update(doctor);
+        //1) Check if Doctor With DoctorId Exist or Not
+        if (!_doctorRepo.Exist(doctorId))
+        {
+            throw new KeyNotFoundException($"Doctor with Id {doctorId} doesn't exist");
+        }
+        //2) Remove Slot
+        _appointmentRepository.Delete(slotId);
+
     }
+
+    public void UpdateAppointmentSlot(int doctorId, AppointmentSlot slot)
+    {
+        if (!_doctorRepo.Exist(doctorId))
+            throw new KeyNotFoundException($"Doctor with Id {doctorId} doesn't exist");
+        slot.DoctorId = doctorId;
+        _appointmentRepository.Update(slot);
+    }
+
+
 }
