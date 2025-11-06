@@ -1,5 +1,4 @@
-﻿
-namespace Clinic_Management_System.Business.Models;
+﻿namespace Clinic_Management_System.Business.Models;
 
 internal class Appointment
 {
@@ -16,5 +15,10 @@ internal class Appointment
         SlotId = slotId;
         PatientID = patientID;
         Status = status;
+    }
+    public Appointment(int slotId, int patientID)
+    {
+        SlotId = slotId;
+        PatientID = patientID;
     }
 }
