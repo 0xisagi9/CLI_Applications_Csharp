@@ -1,48 +1,39 @@
 ﻿using Clinic_Management_System.Business.Models;
 using Clinic_Management_System.Core.Interfaces;
+using Clinic_Management_System.DataAccess.DTO;
+using Clinic_Management_System.DataAccess.Repository;
 using System.Data.Common;
 
 namespace Clinic_Management_System.Business.Services;
 
-internal class PatientService(IRepository<Patient> patientRepo)
+internal class PatientService
+    (AppointmentSlotRepository appointmentSlotRepo,
+    AppointmentRepository appointmentRepository,
+    PatientRepository patientRepo)
 {
-    private readonly IRepository<Patient> _patientRepo = patientRepo;
 
-    public IEnumerable<Patient> GetAllPatients() => _patientRepo.GetAll();
+    private readonly AppointmentSlotRepository _appointmentSlotRepo = appointmentSlotRepo;
+    private readonly PatientRepository _patientRepo = patientRepo;
+    private readonly AppointmentRepository _appointmentRepo = appointmentRepository;
 
-    public Patient GetPatientById(int patientId) => _patientRepo.GetById(patientId);
-
-    public void AddNewPatient(Patient patient)
+    public IEnumerable<AvailableSlotsDTO> GetAllAvailabeSlots()
     {
-        try
-        {
-            _patientRepo.Add(patient);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception($"Falied to Add new Patient, {ex.Message}");
-
-        }
+        return _appointmentSlotRepo.GetAllAvailableSlot();
     }
 
-    public void DeletePatient(int patientId)
+    public void BookAppointment(Appointment appointment)
     {
-        try
-        {
-            _patientRepo.Delete(patientId);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception($"Patient with Id:{patientId} Not found, {ex.Message}");
-
-        }
+        _appointmentRepo.BookAppointment(appointment);
     }
 
-    public void UpdatePatient(int patientId, Patient patient)
+    public IEnumerable<Appointment> ViewPatientAppointment(int patientId)
     {
-        patient.UserId = patientId;
+        return _appointmentRepo.ViewAppointmentById(patientId);
+    }
+
+    public void UpdatePatient(Patient patient)
+    {
         _patientRepo.Update(patient);
     }
 
-   
 }
