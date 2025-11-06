@@ -49,7 +49,7 @@ internal class DoctorRepository(IDbConnection connection) : Repository<Doctor>(c
 
     public bool Exist(int id)
     {
-        string sql = "SELECT COUNT(1) FROM Doctor WHERE DoctorID = @DoctorID";
+        string sql = "SELECT COUNT(1) FROM Doctor WHERE DoctorId = @DoctorId";
         return _connection.ExecuteScalar<int>(sql, new { DoctorId = id }) > 0;
     }
 
