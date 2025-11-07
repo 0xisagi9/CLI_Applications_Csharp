@@ -25,4 +25,9 @@ Designed using OOP principles with a modular structure (Models, Services, Utilit
 
 The **Employee Management Application** is a structured project designed to manage employees, departments, and projects. It brings together database design and object-oriented programming (OOP) concepts, serving as a hands-on learning project.
 
+---
+
+### 🏥[Clinic Management System](Clinic_Management_System)
+
+A layered Clinic Management System built with C#, designed to simulate core operations inside a medical clinic — including user authentication, doctor appointment management, and patient handling — using a clean architecture and console-based UI.
 
