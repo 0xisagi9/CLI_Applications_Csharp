@@ -95,13 +95,26 @@ This project follows a **3-Layer Architecture** for better separation of concern
 ## 🖥️ Console UI Preview
 
 ### Welcome Menu
+![WelcomMenu](Docs/WelcomMenu.png)
 
+### Sing Up Menu
+![SignUp](Docs/SingUpDone.png)
+
+![SignUpF](Docs/SignUpFail.png)
 
 ### Login Menu
+![Login](Docs/LogInDone.png)
 
+![Login1](Docs/LoginUserDone.png)
 
 ### Doctor Dashboard
+![Dashboard](Docs/DoctorDashboard.png)
+![Dashboard](Docs/AddNewSlots.png)
+![Dashboard](Docs/DoctorCurrentAppointments.png)
+![Dashboard](Docs/DoctorAppointments.png)
 
+### User Book Appointment
+![Dashboard](Docs/UserBookAppointments.png)
 
 ---
 
@@ -124,6 +137,7 @@ This project follows a **3-Layer Architecture** for better separation of concern
 * Encrypt user passwords.
 * Improve UI navigation.
 * Migrate to a full desktop or web version (e.g., WPF / ASP.NET Core).
+
 
 
 
